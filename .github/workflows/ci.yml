@@ -17,6 +17,9 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    env:
+      CI: true
+
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -29,7 +32,7 @@ jobs:
         with:
           bundler-cache: true
 
-      - uses: browser-actions/setup-chrome@latest
+      - uses: nanasess/setup-chromedriver@v1
 
       - name: Build App
         run: bin/rails db:setup
