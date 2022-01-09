@@ -1,1 +1,8 @@
 <h1 class="font-bold text-6xl">articles.</h1>
+<ul class="w-96 mt-4">
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
+</ul>
