@@ -29,6 +29,8 @@ jobs:
         with:
           bundler-cache: true
 
+      - uses: browser-actions/setup-chrome@latest
+
       - name: Build App
         run: bin/rails db:setup
 
