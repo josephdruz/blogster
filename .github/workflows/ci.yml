@@ -32,8 +32,6 @@ jobs:
         with:
           bundler-cache: true
 
-      - uses: nanasess/setup-chromedriver@v1
-
       - name: Build App
         run: bin/rails db:setup
 
