@@ -1,0 +1,11 @@
+<%= form_with model: article, class: "h-full flex flex-col space-y-8" do |form| %>
+  <section>
+    <%= form.text_field :title, class: "w-full" %>
+  </section>
+  <section>
+    <%= form.rich_text_area :body, class: "h-96" %>
+  </section>
+  <section class="w-full flex justify-end">
+    <%= form.button "Submit", class: "py-2 px-4 rounded-full text-white bg-green-500 hover:bg-green-600" %>
+  </section>
+<% end %>
