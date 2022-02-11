@@ -39,6 +39,11 @@ jobs:
 
       - name: Run Tests
         run: bin/rails spec
+      
+      - name: Upload Coverage
+        uses: codecov/codecov-action@v2
+        with:
+          file: ./coverage/.resultset.json
 
       - name: Heroku login credentials
         run: |
