@@ -74,6 +74,7 @@ group :test do
   gem "webdrivers"
   gem 'database_cleaner-active_record'
   gem 'simplecov', require: false
+  gem 'codecov', require: false
 end
 
 group :production do
