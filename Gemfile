@@ -73,6 +73,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem 'database_cleaner-active_record'
+  gem 'simplecov', require: false
 end
 
 group :production do
