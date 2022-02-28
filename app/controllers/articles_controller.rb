@@ -10,7 +10,6 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
-
   end
 
   def edit
@@ -19,14 +18,28 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new article_params
 
-    if @article.save
-      redirect_to @article
+    respond_to do |format|
+      if @article.save
+        format.html { redirect_to @article, notice: 'Created article successfully.' }
+        format.json { render :show, status: :created, location: @article }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def update
-    if @article.update article_params
-      redirect_to @article
+    @article = Article.find(params[:id])
+
+    respond_to do |format|
+      if @article.update article_params
+        format.html { redirect_to @article, notice: 'Edited article successfully.' }
+        format.json { render :show, status: :ok, location: @article }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -34,7 +47,6 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     respond_to do |format|
-      format.turbo_stream { redirect_to root_path }
       format.html { redirect_to root_path }
       format.json { head :no_content }
     end
