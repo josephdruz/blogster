@@ -1,6 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe "Articles", type: :request do
+  describe "GET /articles/new" do
+    it "should render the new template when making the request" do
+      get new_article_path
+
+      expect(response).to have_http_status(:ok)
+      expect(response).to render_template(:new)
+    end
+  end
+
+  describe "GET /articles/:id/edit" do
+    it "should render the edit template when making the request" do
+      article = create :valid_article
+
+      get edit_article_path(article)
+
+      expect(response).to have_http_status(:ok)
+      expect(response).to render_template(:edit)
+    end
+  end
+
   describe "POST /articles" do
     it "should create a new article" do
       expect {
