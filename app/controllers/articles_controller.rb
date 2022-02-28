@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @article = Article.find(params[:id])
   end
 
   def create
@@ -35,7 +36,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.update article_params
         format.html { redirect_to @article, notice: 'Edited article successfully.' }
-        format.json { render :show, status: :ok, location: @article }
+        format.json { render json: @article, status: :ok, location: @article }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @article.errors, status: :unprocessable_entity }
