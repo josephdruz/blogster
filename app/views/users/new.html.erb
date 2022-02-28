@@ -1,0 +1,30 @@
+<h2 class="lowercase font-bold text-xl">Register</h2>
+<%= form_with model: @user, class: "w-80 flex flex-col space-y-4" do |form| %>
+
+  <section>
+    <%= form.label :email %>
+    <%= form.email_field :email, class: "input" %>
+    <% @user.errors.full_messages_for(:email).each do |message| %>
+      <%= render "errors/form", message: message %>
+    <% end %>
+  </section>
+
+  <section>
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "input" %>
+    <% @user.errors.full_messages_for(:password).each do |message| %>
+      <%= render "errors/form", message: message %>
+    <% end %>
+  </section>
+
+  <section>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: "input" %>
+    <% @user.errors.full_messages_for(:password_confirmation).each do |message| %>
+      <%= render "errors/form", message: message %>
+    <% end %>
+  </section>
+
+  <%= form.submit "Register", class: 'hover:bg-blue-500 hover:cursor-pointer bg-blue-400 text-white px-4 py-2 rounded-md' %>
+
+<% end %>

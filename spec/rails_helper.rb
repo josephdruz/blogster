@@ -7,6 +7,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'support/database_cleaner'
+require 'support/factory_bot'
 
 if ENV["CI"]
   Capybara.javascript_driver = :selenium_chrome_headless
@@ -74,4 +75,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
 end
