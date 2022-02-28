@@ -26,7 +26,7 @@ RSpec.describe "Users", type: :request do
       }.to change(User, :count).by(1)
     end
 
-    it "should redirect to login when created successfully" do
+    it "should redirect to articles when created successfully" do
       post users_path, params: { user: attributes_for(:valid_user) }
 
       expect(response).to redirect_to(articles_path)
