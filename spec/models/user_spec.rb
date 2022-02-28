@@ -7,7 +7,13 @@ RSpec.describe User, type: :model do
   end
 
   it "should not create a user with invalid attributes" do
-    user = create :invalid_user
-    expect(user).to.not be_valid
+    user = build :invalid_user
+    user.validate
+
+    expect(user).to_not be_valid
+
+    expect(user.errors.any?).to be_truthy
+    expect(user.errors.full_messages).to include "Email can't be blank"
+    expect(user.errors.full_messages).to include "Password can't be blank"
   end
 end
